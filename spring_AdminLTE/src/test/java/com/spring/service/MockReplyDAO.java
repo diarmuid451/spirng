@@ -29,14 +29,15 @@ public class MockReplyDAO implements ReplyDAO {
 
 	@Override
 	public int selectReplySeqNextValue() throws SQLException {
+		int cnt = 0;
 		
-		return 0;
+		return cnt;
 	}
 
 	@Override
 	public List<ReplyVO> selectReplyListPage(int bno, SearchCriteria cri) throws SQLException {
-		
-		return null;
+		List<ReplyVO> replyListPage = null;
+		return replyListPage;
 	}
 
 	@Override

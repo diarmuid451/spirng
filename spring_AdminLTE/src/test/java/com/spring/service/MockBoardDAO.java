@@ -57,8 +57,11 @@ public class MockBoardDAO implements BoardDAO {
 
 	@Override
 	public void insertBoard(BoardVO board) throws SQLException {
+		if(board==null) throw new SQLException();
+		if(board.getWriter()==null || board.getWriter().isEmpty()) 
+				throw new SQLException("1111:부적합한 열유형"); 
 		
-
+		
 	}
 
 	@Override

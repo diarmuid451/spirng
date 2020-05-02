@@ -1,6 +1,7 @@
 package com.spring.service;
 
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Before;
@@ -20,6 +21,7 @@ public class TestBoardServiceImpl {
 	
 	private BoardServiceImpl service;
 	
+	private Date date = new Date();
 	@Before
 	public void init() {
 		service = new BoardServiceImpl();
@@ -53,7 +55,24 @@ public class TestBoardServiceImpl {
 	
 	@Test
 	public void testInsert() throws SQLException {
+		BoardVO board = new BoardVO();
+		int bno = 1;
+		board = new BoardVO();
+		board.setBno(bno);
+		board.setTitle("첫번째 제목");
+		board.setContent("첫번쨰 내용");
+		board.setWriter("첫번째 작성자");
+		board.setViewcnt(0);
+		board.setRegDate(date);
+		board.setUpdatedate(date);
 		
+		try {
+			service.write(board);			
+		} catch(SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		Assert.assertEquals(date, board.getRegDate());
 	}
 
 }

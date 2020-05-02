@@ -19,23 +19,10 @@ public class ReplyServiceImpl implements ReplyService{
 	}
 	
 	@Override
-	public Map<String, Object> getReplyList(int bno, SearchCriteria cri) throws SQLException {
-		Map<String,Object> dataMap=new HashMap<String,Object>();
-		
+	public List<ReplyVO> getReplyList(int bno, SearchCriteria cri) throws SQLException {
 		List<ReplyVO> replyList=
 				replyDAO.selectReplyListPage(bno, cri);
-		
-		int count = replyDAO.countReply(bno);
-		
-		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(count);
-		
-		
-		dataMap.put("replyList", replyList);
-		dataMap.put("pageMaker", pageMaker);
-		
-		return dataMap;
+		return replyList;
 	}
 
 	@Override
