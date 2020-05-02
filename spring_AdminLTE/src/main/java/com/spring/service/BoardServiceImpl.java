@@ -24,7 +24,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
-	public Map<String, Object> getBoardList(SearchCriteria cri) throws SQLException {
+	public List<BoardVO> getBoardList(SearchCriteria cri) throws SQLException {
 		List<BoardVO> boardList = boardDAO.selectBoardCriteria(cri);
 		
 		for (BoardVO boardVO : boardList) {
@@ -32,14 +32,7 @@ public class BoardServiceImpl implements BoardService {
 			boardVO.setReplycnt(cnt);
 		}
 		
-		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(boardDAO.selectBoardCriteriaTotalCount(cri));
-		
-		Map<String, Object> dataMap = new HashMap<String, Object>();
-		dataMap.put("boardList", boardList);
-		dataMap.put("pageMaker", pageMaker);
-		return dataMap;
+		return boardList;
 	}
 
 	@Override

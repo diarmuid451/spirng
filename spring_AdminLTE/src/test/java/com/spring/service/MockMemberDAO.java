@@ -66,7 +66,7 @@ public class MockMemberDAO implements MemberDAO{
 		
 		member=new MemberVO();
 		member.setId(id);
-		member.setPwd("1234");
+		member.setPwd("mimi");
 		member.setEnabled(1);
 		member.setPhone("010-1234-5678");
 		member.setEmail(id+"@"+id+".com");
@@ -78,7 +78,7 @@ public class MockMemberDAO implements MemberDAO{
 	@Override
 	public void insertMember(MemberVO member) throws SQLException {
 		if(member==null) throw new SQLException();
-		if(member.getId().isEmpty() || member.getId()==null) 
+		if(member.getName()==null || member.getName().isEmpty()) 
 				throw new SQLException("1111:부적합한 열유형"); 
 		
 	}

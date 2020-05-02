@@ -69,7 +69,7 @@ public class TestMemberServiceImpl {
 			Assert.assertEquals(1,2);
 		}
 		
-		testPWD="1234";
+		testPWD="mimi";
 		try{
 			service.login(testID,testPWD);
 		}catch(InvalidPasswordException e){
@@ -79,6 +79,32 @@ public class TestMemberServiceImpl {
 		}
 		
 	
+	}
+	
+	@Test
+	public void testInsert() throws SQLException {
+		MemberVO member=new MemberVO();
+		member.setId("mimi");
+		member.setPwd("mimi");
+		member.setName("mimi");
+		member.setPhone("000-0000-1234");
+		try {
+			service.regist(member);			
+			Assert.assertEquals(1, 1);
+		} catch(SQLException e) {
+			System.out.println(e.getMessage());
+			Assert.assertEquals(1, 2);
+		}
+	}
+	
+	@Test
+	public void testMemberDetail() throws SQLException {
+		MemberVO member = new MemberVO();
+		
+		String id = "mimi";
+		member =service.getMember(id);
+		
+		Assert.assertEquals(id, member.getPwd());
 	}
 		
 }

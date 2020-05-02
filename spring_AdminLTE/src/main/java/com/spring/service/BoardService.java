@@ -1,7 +1,7 @@
 package com.spring.service;
 
 import java.sql.SQLException;
-import java.util.Map;
+import java.util.List;
 
 import com.spring.dto.BoardVO;
 import com.spring.request.SearchCriteria;
@@ -9,7 +9,7 @@ import com.spring.request.SearchCriteria;
 public interface BoardService {
 	
 	// 목록조회	
-	Map<String,Object> getBoardList(SearchCriteria cri)throws SQLException;
+	List<BoardVO> getBoardList(SearchCriteria cri)throws SQLException;
 	
 	// 상세보기
 	BoardVO getBoard(int bno)throws SQLException;	

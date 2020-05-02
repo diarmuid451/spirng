@@ -36,8 +36,6 @@ public class BoardDAOImpl implements BoardDAO {
 		int count=0;
 		count = sqlSession.selectOne("Board-Mapper.selectBoardCriteriaTotalCount",cri);
 		
-		
-		
 		return count;
 	}
 
