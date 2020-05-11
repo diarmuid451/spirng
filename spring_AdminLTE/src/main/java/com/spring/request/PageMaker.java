@@ -42,6 +42,13 @@ public class PageMaker {
 		
 		return query;
 	}
+	public static String makeQuery(SearchCriteria cri) {
+		String query = "?page="+cri.getPage()+"&perPageNum="+cri.getPerPageNum()
+		+"&searchType="+cri.getSearchType()
+		+"&keyword="+cri.getKeyword();
+		
+		return query;
+	}
 	
 	public int getTotalCount() {
 		return totalCount;

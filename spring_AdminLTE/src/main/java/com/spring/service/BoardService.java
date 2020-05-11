@@ -1,7 +1,7 @@
 package com.spring.service;
 
 import java.sql.SQLException;
-import java.util.List;
+import java.util.Map;
 
 import com.spring.dto.BoardVO;
 import com.spring.request.SearchCriteria;
@@ -9,7 +9,7 @@ import com.spring.request.SearchCriteria;
 public interface BoardService {
 	
 	// 목록조회	
-	List<BoardVO> getBoardList(SearchCriteria cri)throws SQLException;
+	Map<String,Object> getBoardList(SearchCriteria cri)throws SQLException;
 	
 	// 상세보기
 	BoardVO getBoard(int bno)throws SQLException;	
@@ -26,9 +26,7 @@ public interface BoardService {
 	
 	// 조회수 증가
 	void viewCnt(int bno) throws SQLException;
-	
-	// 시퀀스 호출
-	int seqNextVal() throws SQLException;
+
 }
 
 

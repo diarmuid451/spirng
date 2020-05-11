@@ -1,7 +1,7 @@
 package com.spring.service;
 
 import java.sql.SQLException;
-import java.util.List;
+import java.util.Map;
 
 import com.spring.dto.ReplyVO;
 import com.spring.request.SearchCriteria;
@@ -9,8 +9,8 @@ import com.spring.request.SearchCriteria;
 public interface ReplyService {
 	
 		//리스트보기
-		List<ReplyVO> getReplyList(int bno,SearchCriteria cri)
-									throws SQLException;		
+		Map<String,Object> getReplyList(int bno,SearchCriteria cri)
+			throws SQLException;		
 		//등록
 		void registReply(ReplyVO reply)throws SQLException;
 			

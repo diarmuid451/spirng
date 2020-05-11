@@ -24,15 +24,21 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
-	public List<BoardVO> getBoardList(SearchCriteria cri) throws SQLException {
+	public Map<String, Object> getBoardList(SearchCriteria cri) throws SQLException {
 		List<BoardVO> boardList = boardDAO.selectBoardCriteria(cri);
-		
 		for (BoardVO boardVO : boardList) {
 			int cnt = replyDAO.countReply(boardVO.getBno());
 			boardVO.setReplycnt(cnt);
 		}
 		
-		return boardList;
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(boardDAO.selectBoardCriteriaTotalCount(cri));
+		
+		Map<String, Object> dataMap = new HashMap<String, Object>();
+		dataMap.put("boardList", boardList);
+		dataMap.put("pageMaker", pageMaker);
+		return dataMap;
 	}
 
 	@Override
@@ -47,11 +53,15 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public BoardVO getBoardForModify(int bno) throws SQLException {
 		BoardVO board = boardDAO.selectBoardByBno(bno);
+		int cnt = replyDAO.countReply(bno);
+		board.setReplycnt(cnt);
 		return board;
 	}
 
 	@Override
 	public void write(BoardVO board) throws SQLException {
+		int seq = boardDAO.selectBoardSeqNext();
+		board.setBno(seq);
 		boardDAO.insertBoard(board);
 	}
 
@@ -69,12 +79,4 @@ public class BoardServiceImpl implements BoardService {
 		boardDAO.increaseViewCnt(bno);
 		
 	}
-	@Override
-	public int seqNextVal() throws SQLException {
-		int seq = boardDAO.selectBoardSeqNext();
-		return seq;
-	}
-	
-	
-
 }
