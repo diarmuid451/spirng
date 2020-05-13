@@ -4,22 +4,43 @@
 	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
+	<!-- DAO -->
 	<bean id="menuDAO"
 		class="com.groupware.dao.menu.MenuDAOImpl"
 		p:sqlSession-ref="sqlSession" />
 		
+	<bean id="mybatisBoardDAO"
+	      class="com.groupware.dao.board.MybatisBoardDAOImpl"
+	      p:session-ref="sqlSession"
+	      />      
+	<bean id="pageMybatisBoardDAO"
+		  class="com.groupware.dao.board.PageMybatisBoardDAOImpl"
+		  p:session-ref="sqlSession"
+		  p:instance-ref="mybatisBoardDAO"
+		  />	
+
+	<bean id="replyDAO"
+	      class="com.groupware.dao.board.ReplyDAOImpl"
+	      p:session-ref="sqlSession"
+	      />		
+	
+		
+	<!-- Service -->	
 	<bean id="menuService"
 		class="com.groupware.service.menu.MenuServiceImpl"
 		p:menuDAO-ref="menuDAO"/>
+	
+	 <bean id="boardSevice"
+	      class="com.groupware.service.board.BoardServiceImpl"
+	      p:boardDAO-ref="pageMybatisBoardDAO"
+	      p:replyDAO-ref="replyDAO"
+	      />     
 	
 	<!-- <bean id="memberDAO"
 	      class="com.groupware.dao.MemberDAOImpl"
 	      p:sqlSession-ref="sqlSession"
 	      />	      
-	<bean id="boardDAO"
-	      class="com.groupware.dao.BoardDAOImpl"
-	      p:sqlSession-ref="sqlSession"
-	      />
+	
 	<bean id="replyDAO"
 	      class="com.groupware.dao.ReplyDAOImpl"
 	      p:sqlSession-ref="sqlSession"
@@ -32,14 +53,14 @@
 	<bean id="attachDAO"
 	      class="com.groupware.dao.AttachDAOImpl"
 	      p:sqlSession-ref="sqlSession"
-	      />
+	      /> -->
 	      
-	<bean id="memberService"
+	<!-- <bean id="memberService"
 	      class="com.groupware.service.MemberServiceImpl"
 	      p:memberDAO-ref="memberDAO"
-	      />
+	      /> 
 	            
-	<bean id="boardSevice"
+	 <bean id="boardSevice"
 	      class="com.groupware.service.BoardServiceImpl"
 	      p:boardDAO-ref="boardDAO"
 	      p:replyDAO-ref="replyDAO"

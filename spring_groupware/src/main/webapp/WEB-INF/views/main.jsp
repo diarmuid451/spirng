@@ -390,7 +390,7 @@
 		</div>
 	</div>
 	<!-- main end -->
-	<div id="if_list_div" style="position:relative;sheight:0;padding:0;soverflow:hidden;" class="hide">
+	<div id="if_list_div" style="position:relative;padding:0;" class="hide">
 			<iframe id="if_list" name="if_list" frameborder="0" scrolling="0" src="" style="position: absolute; top: 0px; left: 0px; bottom: 0px; height: 830px; width: 100%; border: 0px;"></iframe>
 		</div>	
 	</div>		

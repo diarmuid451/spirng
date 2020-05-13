@@ -385,74 +385,8 @@ function onSubMenu(mCode) {
             });
             
             var active_li = link_element.closest('li').addClass('active').parents('.nav li').addClass('active open');
-           /* nav.closest('.sidebar[data-sidebar-scroll=true]').each(function() {
-                var $this = $(this);
-                $this.ace_sidebar_scroll('reset');
-                $this.ace_sidebar_scroll('scroll_to_active');//first time only
-            });*/
 
-            //프로젝트에서만 사용하는 전달 값
-            var isProj = mCode.indexOf("MENU16") == 0;
-            var projParam = "";
-            if (isProj) {
-                if (link_element.attr("data-url").indexOf("?") == -1) {
-                    projParam = "?";
-                } else {
-                    projParam = "&";
-                }
-                projParam += "workType=2&moduleId=" + projModuleId;
-            }
-            //커뮤니티 게시판은 submenu.jsp에서 처리됨
-            //커뮤니티 일정 에서만 사용하는 전달 값
-            var isClub = mCode.indexOf("MENU1907") == 0;
-            if (isClub) {
-            	if (link_element.attr("data-url").indexOf("?") == -1) {
-            		projParam = "?";
-            	} else {
-            		projParam = "&";
-            	}
-            	projParam += "workType=3&scheId=" + clubModuleId;
-            }
-            //커뮤니티 설문 에서만 사용하는 전달 값
-            isClub = mCode.indexOf("MENU1908") == 0;
-            if (isClub) {
-            	if (link_element.attr("data-url").indexOf("?") == -1) {
-            		projParam = "?";
-            	} else {
-            		projParam = "&";
-            	}
-            	projParam += "workType=3&pollId=" + clubModuleId;
-            }
-            //커뮤니티 관리 에서만 사용하는 전달 값
-            isClub = mCode.indexOf("MENU1905") == 0;
-            if (isClub) {	
-            	if (link_element.attr("data-url").indexOf("?") == -1) {
-            		projParam = "?";
-            	} else {
-            		projParam = "&";
-            	}
-            	if(mCode.indexOf("MENU190502") == 0){ //커뮤니티 게시판관리 에서만 사용하는 전달 값
-            		projParam += "workType=3&moduleId=" + clubModuleId;
-            	}else{
-            		projParam += "workType=3&clubId=" + clubModuleId;
-            	}
-            	
-            }
-            
-            //커뮤니티 소개 에서만 사용하는 전달 값
-            isClub = mCode.indexOf("MENU1910") == 0;
-            if (isClub) {
-            	if (link_element.attr("data-url").indexOf("?") == -1) {
-            		projParam = "?";
-            	} else {
-            		projParam = "&";
-            	}
-            	projParam += "workType=3&clubId=" + clubModuleId;
-            }
-
-            $("#if_list").attr("src", link_element.attr("data-url")+projParam);
-            //if ($("#if_list").attr("src") != link_element.attr("data-url")+projParam) {
-            //}
+            $("#if_list").attr("src", link_element.attr("data-url"));
             
             if ($("button[data-target='#sidebar']").attr("aria-expanded") == 'true') {
                 $("button[data-target='#sidebar']").click();

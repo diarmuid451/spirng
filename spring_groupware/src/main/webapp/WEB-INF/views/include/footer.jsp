@@ -114,6 +114,7 @@ $(document).ready(function() {
 		     </c:if>
 		},
 		error:function(){
+			alert("로그인 하세요!");
 			location.href="<%=request.getContextPath()%>/commons/login";
 		}
 		

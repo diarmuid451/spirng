@@ -5,7 +5,7 @@
 		<pattern>/*</pattern>				
 	</decorator>
 	
-	<decorator name="openWindow" page="open_decorator.jsp">
+	<decorator name="openWindow" page="openWindow_decorator.jsp">
 		<pattern>/**/*</pattern>
 	</decorator>
 		
